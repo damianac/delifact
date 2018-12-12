@@ -1,12 +1,12 @@
 .cta {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: fade-out($primary, 0.1);
+  background-color: fade-out($main-color-2, 0.1);
   .cta-inner {
     position: relative;
     padding: 3rem;
     margin: 0.5rem;
-    background-color: fade-out($white, 0.15);
+    background-color: fade-out($main-color-3, 0.15);
     &:before {
       border-radius: 0.5rem;
       content: '';

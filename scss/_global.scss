@@ -17,6 +17,7 @@ h6 {
 
 p {
   line-height: 1.75;
+  text-align: justify;
 }
 
 .text-faded {
@@ -28,6 +29,9 @@ p {
   margin-bottom: 5rem;
   text-transform: uppercase;
   line-height: 1;
+  .delifact-header {
+    width: 450px;
+  }
 
   @include heading-font;
   .site-heading-upper {
@@ -52,15 +56,18 @@ p {
   .section-heading-upper {
     display: block;
     font-size: 1rem;
-    font-weight: 800;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+
   }
   .section-heading-lower {
     display: block;
     font-size: 3rem;
     font-weight: 100;
+    font-family: 'Roboto', sans-serif;
   }
 }
 
 .bg-faded {
-  background-color: fade-out($white, 0.15);
+  background-color: fade-out($main-color-3, 0.15);
 }
