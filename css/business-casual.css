@@ -81,6 +81,11 @@ p {
   background-color: rgba(197, 209, 235, 0.85);
 }
 
+#myChart {
+  width: 1000px;
+  height: 1000px;
+}
+
 #mainNav {
   background-color: rgba(13, 19, 33, 0.9);
   font-family: 'Raleway';
@@ -202,6 +207,27 @@ p {
     margin-top: -3rem;
     max-width: 50vw;
   }
+}
+
+.table {
+  width: 50%;
+  margin: auto;
+  border: 0;
+  font-family: Roboto,sans-serif;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.56);
+  color: #c5d1eb;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background: aliceblue;
+  color: #0d1321;
+}
+
+.table td, .table th {
+  border: 0;
 }
 
 .list-hours {

@@ -71,3 +71,8 @@ p {
 .bg-faded {
   background-color: fade-out($main-color-3, 0.15);
 }
+
+#myChart {
+  width: 1000px;
+  height: 1000px;
+}
