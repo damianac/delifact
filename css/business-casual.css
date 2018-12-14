@@ -213,16 +213,16 @@ p {
   width: 50%;
   margin: auto;
   border: 0;
-  font-family: Roboto,sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.56);
+  background-color: #0D1321;
   color: #c5d1eb;
 }
 
 .table-striped tbody tr:nth-of-type(even) {
-  background: aliceblue;
+  background: #c5d1eb;
   color: #0d1321;
 }
 
@@ -251,6 +251,32 @@ p {
     width: 50%;
     font-size: 1.1rem;
   }
+}
+
+.input-group #usr {
+  display: inline-block;
+  width: 40px;
+  border-radius: .2rem;
+  height: 36px;
+  text-align: center;
+  padding: 0px;
+}
+
+.input-group #usr2 {
+  display: inline-block;
+  width: 40px;
+  border-radius: .2rem;
+  height: 36px;
+  text-align: center;
+  padding: 0px;
+}
+
+.input-group button {
+  padding: 0px 12px 0px 12px;
+}
+
+.input-group button span {
+  font-size: 22px;
 }
 
 .address strong {

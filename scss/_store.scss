@@ -16,6 +16,31 @@
   }
 }
 
+.input-group {
+  #usr {
+    display: inline-block;
+    width: 40px;
+    border-radius: .2rem;
+    height: 36px;
+    text-align: center;
+    padding: 0px;
+  }
+  #usr2 {
+    display: inline-block;
+    width: 40px;
+    border-radius: .2rem;
+    height: 36px;
+    text-align: center;
+    padding: 0px;
+  }
+  button {
+    padding: 0px 12px 0px 12px;
+    span {
+      font-size: 22px;
+    }
+  }
+}
+
 .address {
   strong {
     font-size: 1.2rem;

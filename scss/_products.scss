@@ -24,14 +24,14 @@
   width: 50%;
   margin: auto;
   border: 0;
-  font-family: Roboto,sans-serif;
+  font-family: Roboto, sans-serif;
 }
 .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.56);
+    background-color: $main-color-2;
     color: $main-text-color-2;
 }
 .table-striped tbody tr:nth-of-type(even) {
-    background: aliceblue;
+    background: $main-color-3;
     color: $main-text-color-1;
 }
 .table td, .table th {
