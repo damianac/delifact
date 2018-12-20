@@ -31,15 +31,15 @@ p {
 }
 
 .site-heading {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   text-transform: uppercase;
   line-height: 1;
   font-family: 'Raleway';
 }
 
 .site-heading .delifact-header {
-  width: 450px;
+  width: 350px;
 }
 
 .site-heading .site-heading-upper {
@@ -209,25 +209,15 @@ p {
   }
 }
 
-.table {
-  width: 50%;
+#tabela {
+  display: block;
   margin: auto;
-  border: 0;
-  font-family: Roboto, sans-serif;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #0D1321;
-  color: #c5d1eb;
-}
-
-.table-striped tbody tr:nth-of-type(even) {
-  background: #c5d1eb;
-  color: #0d1321;
-}
-
-.table td, .table th {
-  border: 0;
+#sastav {
+  display: block;
+  margin: auto;
+  width: 1000px;
 }
 
 .list-hours {
@@ -281,6 +271,19 @@ p {
 
 .address strong {
   font-size: 1.2rem;
+}
+
+.order-buttons {
+  padding: 5px;
+}
+
+.order-buttons button {
+  padding: 5px;
+}
+
+.article-counter {
+  margin: auto;
+  width: 50%;
 }
 
 .footer {

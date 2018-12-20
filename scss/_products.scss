@@ -20,20 +20,15 @@
     }
   }
 }
-.table {
-  width: 50%;
+
+#tabela {
+  display: block;
   margin: auto;
-  border: 0;
-  font-family: Roboto, sans-serif;
 }
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: $main-color-2;
-    color: $main-text-color-2;
-}
-.table-striped tbody tr:nth-of-type(even) {
-    background: $main-color-3;
-    color: $main-text-color-1;
-}
-.table td, .table th {
-    border: 0;
+
+
+#sastav {
+  display: block;
+  margin: auto;
+  width: 1000px;
 }

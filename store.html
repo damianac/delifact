@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <title>DeliFact</title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/business-casual.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
   </head>
 
@@ -31,7 +33,7 @@
    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
       <div class="container">
-        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Delifact</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,7 +74,7 @@
           <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-01.jpg" alt="">
           <div class="product-item-description d-flex mr-auto">
             <div class="bg-faded p-5 rounded">
-              <div class="input-group">
+              <div class="input-group article-counter">
                 <span class="input-group-btn">
                  <button type="button" onclick="increasePestoCount()" class="btn btn-success btn-sm"><span>+</span></button>
                 </span>
@@ -80,6 +82,10 @@
                 <span class="input-group-btn">
                   <button type="button" onclick="decreasePestoCount()" class="btn btn-success btn-sm"><span>-</span></button>
                 </span>
+              </div>
+              <div class="btn-group order-buttons" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
+                <button type="button" class="btn btn-warning btn-sm">Poruči odmah</button>
               </div>
             </div>
           </div>
@@ -101,7 +107,7 @@
           <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/products-02.jpg" alt="">
           <div class="product-item-description d-flex mr-auto">
             <div class="bg-faded p-5 rounded">
-              <div class="input-group">
+              <div class="input-group article-counter">
                 <span class="input-group-btn">
                  <button type="button" onclick="increasePestosCount()" class="btn btn-success btn-sm"><span>+</span></button>
                 </span>
@@ -110,6 +116,10 @@
                   <button type="button" onclick="decreasePestosCount()" class="btn btn-success btn-sm"><span>-</span></button>
                 </span>
               </div>
+              <div class="btn-group order-buttons" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
+                <button type="button" class="btn btn-warning btn-sm">Poruči odmah</button>
+              </div>
             </div>
           </div>
         </div>
@@ -117,9 +127,11 @@
     </section>
 
 
-    <footer class="footer text-faded text-center py-5">
+   <footer class="footer text-faded text-center py-5">
       <div class="container">
         <p class="m-0 small">Copyright &copy; delifact.rs 2018<br>Telefon: 00 381 67 788 78 78<br>contact@delifact.rs</p>
+        <a target="_blank" href="https://www.fb.com/zanatski"><i class="fab fa-facebook-square"></i></a>
+         <a target="_blank" href="https://www.instagram.com/smiglia"><i class="fab fa-instagram"></i></a>
       </div>
     </footer>
 
