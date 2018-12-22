@@ -84,7 +84,7 @@
                 </span>
               </div>
               <div class="btn-group order-buttons" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
+                <button type="button" onclick="addToCartPesto()" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
                 <button type="button" class="btn btn-warning btn-sm">Poruči odmah</button>
               </div>
             </div>
@@ -117,12 +117,19 @@
                 </span>
               </div>
               <div class="btn-group order-buttons" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
+                <button type="button" onclick="addToCartPestos()" class="btn btn-info btn-sm"><i class="fas fa-shopping-cart"></i> Dodaj u korpu</button>
                 <button type="button" class="btn btn-warning btn-sm">Poruči odmah</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-warning btn-sm order-button">Poruči (<span id="total-orders">0</span>)</button>    
+        <button onclick="emptyCart()" class="btn btn-danger order-remove-button"><i class="fa fa-trash" aria-hidden="true"></i> Isprazni korpu</button>
       </div>
     </section>
 
@@ -138,9 +145,18 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="notify.js"></script>
 
 
     <script>
+      let pestoOrders = 0;
+      let pestosOrders = 0;
+
+      function emptyCart() {
+        pestoOrders = 0;
+        pestosOrders = 0;
+        $("#total-orders").text(0);
+      }
       function increasePestoCount() {
         let value = +$("#usr").val()
         $("#usr").val(++value)
@@ -159,7 +175,72 @@
         if(value <= 0) return
         $("#usr2").val(--value)
       }
+      function addToCartPesto() {
+        let value = +$("#usr").val()
+        if(value > 0) {
+          $.notify("Dodato u korpu", "success");
+          $("#total-orders").text(+$("#total-orders").text() + value);
+        }
+        else 
+          $.notify("Nije unet validan broj za porudzbinu");
+      }
+      function addToCartPestos() {
+        let value = +$("#usr2").val()
+        if(value > 0) {
+          $.notify("Dodato u korpu", "success");
+          $("#total-orders").text(+$("#total-orders").text() + value);
+        }
+        else 
+          $.notify("Nije unet validan broj za porudzbinu");
+      }
     </script>
   </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Popuniti podatke</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Ime:</label>
+          <input type="text" class="form-control">
+          <label>Prezime:</label>
+          <input type="text" class="form-control">
+          <label>Grad / Mesto</label>
+          <input type="text" class="form-control">
+          <label>Ulica i broj</label>
+          <input type="text" class="form-control">
+          <label>Broj Stana</label>
+          <input type="text" class="form-control">
+          <label>Postanski broj</label>
+          <input type="text" class="form-control">
+          <label>Telefon</label>
+          <input type="text" class="form-control">
+          <label>Email adresa</label>
+          <input type="text" class="form-control">
+          <label>Napomena</label>
+          <textarea class="form-control" rows="3" class="form-control"></textarea>
+          <div class="radio">
+            <label><input type="radio" name="optradio" checked>Fizicko lice</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Pravno lice</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
+        <button type="button" class="btn btn-primary">Naruci</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </html>
