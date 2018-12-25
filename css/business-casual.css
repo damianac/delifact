@@ -212,6 +212,7 @@ p {
 #tabela {
   display: block;
   margin: auto;
+  border-radius: 5px;
 }
 
 #sastav {
@@ -297,6 +298,10 @@ p {
   margin: auto;
   margin-top: 5px;
   font-size: 16px;
+}
+
+.order-images img {
+  width: 100px;
 }
 
 .footer {

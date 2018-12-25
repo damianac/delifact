@@ -128,7 +128,7 @@
 
     <section class="page-section">
       <div class="container">
-        <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-warning btn-sm order-button">Poruči (<span id="total-orders">0</span>)</button>    
+        <button  data-toggle="modal" data-target="#exampleModal" type="button" onclick="updateOrders()" class="btn btn-warning btn-sm order-button">Poruči (<span id="total-orders">0</span>)</button>    
         <button onclick="emptyCart()" class="btn btn-danger order-remove-button"><i class="fa fa-trash" aria-hidden="true"></i> Isprazni korpu</button>
       </div>
     </section>
@@ -147,53 +147,9 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="notify.js"></script>
 
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 
-    <script>
-      let pestoOrders = 0;
-      let pestosOrders = 0;
-
-      function emptyCart() {
-        pestoOrders = 0;
-        pestosOrders = 0;
-        $("#total-orders").text(0);
-      }
-      function increasePestoCount() {
-        let value = +$("#usr").val()
-        $("#usr").val(++value)
-      }
-      function decreasePestoCount() {
-        let value = +$("#usr").val()
-        if(value <= 0) return
-        $("#usr").val(--value)
-      }
-      function increasePestosCount() {
-        let value = +$("#usr2").val()
-        $("#usr2").val(++value)
-      }
-      function decreasePestosCount() {
-        let value = +$("#usr2").val()
-        if(value <= 0) return
-        $("#usr2").val(--value)
-      }
-      function addToCartPesto() {
-        let value = +$("#usr").val()
-        if(value > 0) {
-          $.notify("Dodato u korpu", "success");
-          $("#total-orders").text(+$("#total-orders").text() + value);
-        }
-        else 
-          $.notify("Nije unet validan broj za porudzbinu");
-      }
-      function addToCartPestos() {
-        let value = +$("#usr2").val()
-        if(value > 0) {
-          $.notify("Dodato u korpu", "success");
-          $("#total-orders").text(+$("#total-orders").text() + value);
-        }
-        else 
-          $.notify("Nije unet validan broj za porudzbinu");
-      }
-    </script>
+    
   </body>
 
 <!-- Modal -->
@@ -209,34 +165,46 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Ime:</label>
-          <input type="text" class="form-control">
+          <input id="name" type="text" class="form-control">
           <label>Prezime:</label>
-          <input type="text" class="form-control">
+          <input id="surname" type="text" class="form-control">
           <label>Grad / Mesto</label>
-          <input type="text" class="form-control">
+          <input id="city" type="text" class="form-control">
           <label>Ulica i broj</label>
-          <input type="text" class="form-control">
+          <input id="address" type="text" class="form-control">
           <label>Broj Stana</label>
-          <input type="text" class="form-control">
+          <input id="apartment-num" type="text" class="form-control">
           <label>Postanski broj</label>
-          <input type="text" class="form-control">
+          <input id="postal-code" type="text" class="form-control">
           <label>Telefon</label>
-          <input type="text" class="form-control">
+          <input id="phone" type="text" class="form-control">
           <label>Email adresa</label>
-          <input type="text" class="form-control">
+          <input id="mail" type="text" class="form-control">
           <label>Napomena</label>
-          <textarea class="form-control" rows="3" class="form-control"></textarea>
+          <textarea class="form-control" id="additions" rows="3" class="form-control"></textarea>
           <div class="radio">
-            <label><input type="radio" name="optradio" checked>Fizicko lice</label>
+            <label><input type="radio" onchange="changePersonType()" name="optradio" checked> Fizicko lice</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="optradio">Pravno lice</label>
+            <label><input type="radio" onchange="changePersonType()" name="optradio"> Pravno lice</label>
+          </div>
+          <div class="lice" style="display:none">
+            <label>Ime firme</label>
+            <input id="company-name" type="text" class="form-control">
+            <label>PIB</label>
+            <input id="company-id" type="text" class="form-control">
+          </div>
+          <br>
+          <label>Vasa porudzbina</label>
+          <div class="order-images">
+            <span id="ordered-pesto">1</span>x<img src="img/teglica .png">
+            <span id="ordered-pestos">5</span>x<img src="img/teglice.png">
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Otkazi</button>
-        <button type="button" class="btn btn-primary">Naruci</button>
+        <button type="button" onclick="confirmOrder()" class="btn btn-primary">Naruci</button>
       </div>
     </div>
   </div>
@@ -244,3 +212,142 @@
 
 
 </html>
+
+
+<script>
+  let pestoOrders = 0;
+  let pestosOrders = 0;
+  let isFizicko = true;
+
+  function updateOrders() {
+    $("#ordered-pesto").text(pestoOrders);
+    $("#ordered-pestos").text(pestosOrders);
+  }
+
+  function emptyCart() {
+    pestoOrders = 0;
+    pestosOrders = 0;
+    $("#total-orders").text(0);
+  }
+  function increasePestoCount() {
+    let value = +$("#usr").val()
+    $("#usr").val(++value)
+  }
+  function decreasePestoCount() {
+    let value = +$("#usr").val()
+    if(value <= 0) return
+    $("#usr").val(--value)
+  }
+  function increasePestosCount() {
+    let value = +$("#usr2").val()
+    $("#usr2").val(++value)
+  }
+  function decreasePestosCount() {
+    let value = +$("#usr2").val()
+    if(value <= 0) return
+    $("#usr2").val(--value)
+  }
+  function addToCartPesto() {
+    let value = +$("#usr").val()
+    if(value > 0) {
+      pestoOrders = value;
+      $.notify("Dodato u korpu", "success");
+      $("#total-orders").text(+$("#total-orders").text() + value);
+    }
+    else 
+      $.notify("Nije unet validan broj za porudzbinu");
+  }
+  function addToCartPestos() {
+    let value = +$("#usr2").val()
+    if(value > 0) {
+      pestosOrders = value;
+      $.notify("Dodato u korpu", "success");
+      $("#total-orders").text(+$("#total-orders").text() + value);
+    }
+    else 
+      $.notify("Nije unet validan broj za porudzbinu");
+  }
+  function changePersonType() {
+    isFizicko = !isFizicko;
+    if(!isFizicko) {
+      $(".lice").css("display", "block");
+    }
+    else {
+      $(".lice").css("display", "none");
+    }
+  }
+  function confirmOrder() {
+    let order = {
+      name : $("#name").val(),
+      surname: $("#surname").val(),
+      address : $("#address").val(),
+      city: $("#city").val(),
+      apartmentNum: $("#apartment-num").val(),
+      postalCode: $("#postal-code").val(),
+      phone: $("#phone").val(),
+      mail: $("#mail").val(),
+      additions: $("#additions").val(),
+      companyId: $("#company-id").val(),
+      companyName: $("#company-name").val(),
+    };
+    if(order.name === ""){
+      $.notify("Nije uneto ime.");
+      return;
+    }
+    else if(order.surname === ""){
+      $.notify("Nije uneto prezime.");
+      return;
+    }
+    else if(order.address === ""){
+      $.notify("Nije uneta adresa.");
+      return;
+    }
+    else if(order.city === ""){
+      $.notify("Nije uneto mesto/grad");
+      return;
+    }
+    else if(order.apartmentNum === ""){
+      $.notify("Nije unet broj stana.");
+      return;
+    }
+    else if(order.postalCode === ""){
+      $.notify("Nije unet postanski broj.");
+      return;
+    }
+    else if(order.phone === ""){
+      $.notify("Nije unet kontakt telefon.");
+      return;
+    }
+    else if(order.mail === ""){
+      $.notify("Nije uneta mail adresa.");
+      return;
+    }
+    else if(pestoOrders < 1 && pestosOrders < 1){
+      $.notify("Nije izabran ni jedan proizvod");
+      return;
+    }
+    
+
+    Email.send({
+      SecureToken: "00a53565-0bb3-4553-8cfe-9185e89d023f",
+      To : 'lukadamjanac18@gmail.com',
+      From : order.mail,
+      Subject : "Nova narudzbina",
+      Body : 
+        `Ime: ${order.name}<br>
+        Prezime: ${order.surname}<br>
+        Adresa: ${order.address}<br>
+        Mesto: ${order.city}<br>
+        Broj stana: ${order.apartmentNum}<br>
+        Postanski br: ${order.postalCode}<br>
+        Telefon: ${order.phone}<br>
+        Mail: ${order.mail}<br>
+        1x pesto: ${pestoOrders}<br>
+        6x pestos: ${pestosOrders}<br>`
+    }).then(
+      message => {
+        $.notify(`Porudzbina uspesno poslata!`, `success`);
+      }
+    );
+  }
+</script>
