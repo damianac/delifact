@@ -331,7 +331,7 @@
 
     Email.send({
       SecureToken: "00a53565-0bb3-4553-8cfe-9185e89d023f",
-      To : 'lukadamjanac18@gmail.com',
+      To : 'store@delifact.rs',
       From : order.mail,
       Subject : "Nova narudzbina",
       Body : 
@@ -343,6 +343,8 @@
         Postanski br: ${order.postalCode}<br>
         Telefon: ${order.phone}<br>
         Mail: ${order.mail}<br>
+        Ime firme: ${order.companyName}<br>
+        PIB: ${order.companyId}<br>
         1x pesto: ${pestoOrders}<br>
         6x pestos: ${pestosOrders}<br>`
     }).then(
